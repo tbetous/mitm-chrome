@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  mitmproxy:
+    image: mitmproxy/mitmproxy
+    volumes:
+      - ./mitmproxy-cetificates:/home/mitmproxy/.mitmproxy
+    ports:
+      - "8080:8080"
+      - "127.0.0.1:8081:8081"
+    command: mitmweb --showhost --web-host 0.0.0.0 --set web_password='mitm'
+    networks:
+      - proxy
+
+  chrome-vnc:
+    build:
+      context: .
+      dockerfile: chrome-vnc.Dockerfile
+    volumes:
+      - ./html-pages:/root/html-pages
+    platform: linux/amd64
+    ports:
+      - "5900:5900"
+    depends_on:
+      - mitmproxy
+    networks:
+      - proxy
+    environment:
+      - HTTP_PROXY=http://mitmproxy:8080
+      - HTTPS_PROXY=http://mitmproxy:8080
+      - NO_PROXY=localhost,127.0.0.1
+
+networks:
+  proxy:
+    driver: bridge

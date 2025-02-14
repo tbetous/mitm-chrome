@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <input type="text" name="username" placeholder="Username" />
+    <div style="display: flex">
+      <input type="password" name="password" placeholder="Password" />
+      <button>Unhide</button>
+    </div>
+  </body>
+  <script>
+    document.querySelector("button").addEventListener("click", function () {
+      var password = document.querySelector("input[name='password']");
+      var button = document.querySelector("button");
+      if (password.getAttribute("type") === "password") {
+        password.setAttribute("type", "text");
+        button.textContent = "Hide";
+      } else {
+        password.setAttribute("type", "password");
+        button.textContent = "Unhide";
+      }
+    });
+  </script>
+</html>
