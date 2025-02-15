@@ -18,7 +18,7 @@ The goal was to avoid modifying local Chrome installation, installing fake SSL c
 Launch the containers with the following command:
 
 ```
-docker-compose up
+docker-compose up --build
 ```
 
 Once completed, you can:
