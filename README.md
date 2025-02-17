@@ -4,6 +4,8 @@ This project enables the creation of a man-in-the-middle proxy with minimal setu
 
 The repository was created to investigate whether Chrome spellchecks passwords when they are unhidden.
 
+![mitm-chrome](https://github.com/user-attachments/assets/69ab0376-db43-4c17-b77b-11e5723cd41c)
+
 This repository contains a small docker-compose project that creates two containers:
 
 - One container running the official mitmproxy image
